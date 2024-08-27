@@ -12,14 +12,12 @@ export class TreeNode {
 const recur = (
   left: TreeNode | null | undefined,
   right: TreeNode | null | undefined
-): boolean => {
-  if (!left && !right) return true;
-  return left?.val === right?.val
+): boolean =>
+  !left && !right
+    ? true
+    : left?.val === right?.val
     ? recur(left?.left, right?.right) && recur(right?.left, left?.right)
     : false;
-};
 
-export const isSymetric = (root: TreeNode | null): boolean => {
-  if (!root) return true;
-  return recur(root.left, root.right);
-};
+export const isSymetric = (root: TreeNode | null): boolean =>
+  !root ? true : recur(root.left, root.right);
